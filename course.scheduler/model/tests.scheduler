@@ -1,0 +1,14 @@
+room "Room1" capacity 30 available [ Mon 09:00-12:00, Tue 09:00-12:00 ]
+
+course "Math101"
+    teacher "Dr. Smith"
+    teacher_id "T1"
+    duration 2 h
+    sessions 2
+    student_count 25
+    day Mon
+    batches [ "B1" ]
+    prefers [ Mon, Tue ]
+    preferred_sessions [ 0, 1 ]
+
+schedule auto

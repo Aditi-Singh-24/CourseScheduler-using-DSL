@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="courseScheduler" nsURI="http://www.aditi.org/course/scheduler"
+    nsPrefix="courseScheduler">
+  <eClassifiers xsi:type="ecore:EClass" name="CourseScheduler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Element" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Course" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="teacherName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="teacherId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sessions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="studentCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="#//Day"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batches" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefers" unique="false"
+        upperBound="-1" eType="#//Day"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preferredSessions" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Room" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availability" upperBound="-1"
+        eType="#//Availability" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Availability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="#//Day"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeSlot" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Day">
+    <eLiterals name="Mon" literal="Mon"/>
+    <eLiterals name="Tue" value="1" literal="Tue"/>
+    <eLiterals name="Wed" value="2" literal="Wed"/>
+    <eLiterals name="Thu" value="3" literal="Thu"/>
+    <eLiterals name="Fri" value="4" literal="Fri"/>
+    <eLiterals name="Sat" value="5" literal="Sat"/>
+    <eLiterals name="Sun" value="6" literal="Sun"/>
+  </eClassifiers>
+</ecore:EPackage>

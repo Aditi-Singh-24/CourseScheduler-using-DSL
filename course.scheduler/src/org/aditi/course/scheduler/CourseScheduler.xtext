@@ -1,0 +1,43 @@
+grammar org.aditi.course.scheduler.CourseScheduler with org.eclipse.xtext.common.Terminals
+
+generate courseScheduler "http://www.aditi.org/course/scheduler"
+
+CourseScheduler:
+    elements+=Element*;
+
+Element:
+    Course | Room | TimeSlot | ScheduleTrigger; 
+
+
+Course:
+    'course' name=STRING
+    'teacher' teacherName=STRING
+    'teacher_id' teacherId=STRING
+    'duration' duration=INT 'h'
+    'sessions' sessions=INT
+    'student_count' studentCount=INT
+    'day' day=Day
+    'batches' '[' batches+=STRING (',' batches+=STRING)* ']'
+    'prefers' '[' prefers+=Day (',' prefers+=Day)* ']'
+	'preferred_sessions' '[' preferredSessions+=INT (',' preferredSessions+=INT)* ']'
+;
+
+
+Room:
+    'room' name=STRING
+    'capacity' capacity=INT
+    'available' '[' availability+=Availability (',' availability+=Availability)* ']';
+
+Availability:
+    day=Day start=TIME '-' end=TIME;
+
+TimeSlot:
+    'time_slot' name=STRING start=TIME '-' end=TIME;
+
+ScheduleTrigger:
+    'schedule' 'auto';
+
+enum Day:
+    Mon | Tue | Wed | Thu | Fri | Sat | Sun;
+
+terminal TIME: ('0'..'2') ('0'..'9') ':' ('0'..'5') ('0'..'9');
